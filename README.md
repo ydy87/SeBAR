@@ -1,10 +1,53 @@
-# SeBAR
+# SeBAR - Self-Balancing Assistant Robot
 
-Self - Balancing Assistant Robot으로, 자가 균형 로봇을 제작했습니다.
+산업용 환경을 위한 자가 균형 어시스턴트 로봇 프로젝트입니다.  
+PID 제어 기반으로 안정적인 밸런스를 유지하며, ROS2 통신을 통해 실시간 제어가 가능합니다. 손동작 제스처 인식과 폼 체인지 기능도 지원합니다.
 
-하드웨어는 Dynamixel MX-106 모터 4개, opencr, zed camera, AGX Xaiver, IntelliThings iAHRS(RB-SDA-v1) 센서등을 사용하였습니다.
+---
 
-자세한 내용은 다음 ppt와 보고서를 참고해주세요.
-https://docs.google.com/presentation/d/1NiiJzLeZGI7QI9Rv94XSTxheryKbz7s3/edit?usp=drive_link&ouid=107219096950976009680&rtpof=true&sd=true
-https://drive.google.com/file/d/1dOEir8yNCA82eoTREtjI6QiM8iuXTSKE/view?usp=drive_link
-https://onedrive.live.com/personal/ab27c0969113fccc/_layouts/15/Doc.aspx?sourcedoc=%7B378787a6-e2ba-4b8e-9b17-b13821b06861%7D&action=default&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3AvYy9hYjI3YzA5NjkxMTNmY2NjL0VhYUhoemU2NG81TG14ZXhPQ0d3YUdFQmhGbFNGZ0FZQmtUSlhPYy1wMlFyY1E_ZT1zWEc4MXE&slrid=b71699a1-700d-8000-97d5-c5cc03f43eea&originalPath=aHR0cHM6Ly8xZHJ2Lm1zL3AvYy9hYjI3YzA5NjkxMTNmY2NjL0VhYUhoemU2NG81TG14ZXhPQ0d3YUdFQmhGbFNGZ0FZQmtUSlhPYy1wMlFyY1E_cnRpbWU9M0EyVmRzQ0czVWc&CID=44cf910c-1c0e-47a5-b594-4cbf82d11193&_SRM=0%3AG%3A38&file=%ED%95%9C%EC%9D%B4%EC%9D%8C.pptx
+## 📌 프로젝트 개요
+
+- **프로젝트명**: SeBAR (Self–Balancing Assistant Robot)
+- **목표**: 자가 균형 기능과 제스처 기반 직관적 제어를 통한 작업 효율성 및 안정성 향상
+- **개발 기간**: 2024년
+- **담당 역할**: 밸런스 제어 시스템 개발 (PID 제어기 기반)
+
+---
+
+## ⚙️ 시스템 구성
+
+- **하드웨어**
+  - NVIDIA Jetson AGX Xavier (ROS2 기반 제어)
+  - Dynamixel MX-106 (4개)
+  - IAHRS (RB-SDA-v1) IMU 센서
+  - ZED Stereo Camera
+  - OPENCR 1.0 컨트롤러
+
+- **소프트웨어**
+  - Ubuntu 20.04 + ROS2 Foxy
+  - C++, Python
+  - PID 제어 알고리즘
+  - IMU 데이터 기반 밸런스 제어
+  - YOLOv5 (Gesture Recognition)
+  - Roboflow (Dataset 관리)
+
+---
+
+## 🔥 주요 기능
+
+- **자가 균형 유지**: IMU 센서 기반 PID 제어
+- **제스처 제어**: YOLOv5로 손동작 인식
+- **폼 체인지**: Balancing Mode / Creeping Mode 전환
+- **ROS2 통신 기반 제어**: Topic 발행/구독으로 모듈간 통신
+- **객체 추적 및 거리 계산**: ZED Camera 활용
+
+---
+
+## 🛠️ 밸런스 제어 로직
+
+```text
+1. IMU 센서에서 오일러 각도(roll, pitch) 수집
+2. 목표 자세(0°)와 현재 자세를 비교하여 오차 계산
+3. PID 제어기로 오차 보정
+4. Dynamixel 모터에 제어 신호 전달
+5. 모터 목표 위치 업데이트 → 자세 복원
