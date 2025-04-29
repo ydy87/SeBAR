@@ -46,15 +46,6 @@ PID 제어 기반으로 안정적인 밸런스를 유지하며, ROS2 통신을 �
 4. 보정된 제어 신호를 Dynamixel 모터에 전달  
 5. 모터 목표 위치 업데이트 → 실시간 자세 복원  
 
-## 📂 프로젝트 폴더 구조
-
-/src
-  /iahrs_driver              # IMU 데이터 퍼블리셔 패키지
-  /balance_controller        # PID 기반 밸런스 제어 패키지
-/docs                         # 프로젝트 수식 및 설명 문서
-/hardware                     # 하드웨어 구성 사진
-/videos                       # 시연 영상
-
 ## 🚀 ROS2 실행 방법
 
 ```bash
