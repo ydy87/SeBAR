@@ -69,17 +69,10 @@ ros2 launch iahrs_driver iahrs_driver_launch.py
 
 # 밸런스 컨트롤러 실행
 ros2 run balance_controller balance_controller_node
+```
 
 ## 📸 시연 영상
 
-(여기에 시연 GIF 또는 YouTube 링크 삽입 예정)
+https://www.youtube.com/watch?v=3PRka_jRMKQ
 
-## 🏷️ 라이선스
-
-본 프로젝트는 [MIT License](LICENSE)를 따릅니다.
-
-## 🙌 기여 방법
-
-- Pull Request를 통한 코드 개선 환영
-- Issue를 통한 질문 및 버그 리포트 가능
 
